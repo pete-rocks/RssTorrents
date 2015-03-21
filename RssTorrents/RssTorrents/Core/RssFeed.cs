@@ -26,7 +26,7 @@ namespace RssTorrents
 
 		public void Update()
 		{
-			Shows = Fetcher.GetAllShows (FeedURL);
+			Shows = Fetcher.GetAllShows(FeedURL);
 			LastChecked = DateTime.Now;
 		}
 

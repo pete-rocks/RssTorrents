@@ -5,7 +5,8 @@ namespace RssTorrents
 {
 	public interface IConfigReader
 	{
-		List<RssFeed> ReadFeeds();
+		RssTorrentsConfiguration ReadConfiguration();
+		void SaveConfiguration(RssTorrentsConfiguration config);
 	}
 }
 

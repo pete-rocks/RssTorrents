@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RssTorrents", "RssTorrents\RssTorrents.csproj", "{53557887-C4A1-4BBC-8CAD-7B9017AE53E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RssTorrentsTests", "RssTorrentsTests\RssTorrentsTests.csproj", "{EFB00EBB-AFD7-4B36-B091-F7E3D0005FFB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -13,6 +15,10 @@ Global
 		{53557887-C4A1-4BBC-8CAD-7B9017AE53E7}.Debug|x86.Build.0 = Debug|x86
 		{53557887-C4A1-4BBC-8CAD-7B9017AE53E7}.Release|x86.ActiveCfg = Release|x86
 		{53557887-C4A1-4BBC-8CAD-7B9017AE53E7}.Release|x86.Build.0 = Release|x86
+		{EFB00EBB-AFD7-4B36-B091-F7E3D0005FFB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EFB00EBB-AFD7-4B36-B091-F7E3D0005FFB}.Debug|x86.Build.0 = Debug|Any CPU
+		{EFB00EBB-AFD7-4B36-B091-F7E3D0005FFB}.Release|x86.ActiveCfg = Release|Any CPU
+		{EFB00EBB-AFD7-4B36-B091-F7E3D0005FFB}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0

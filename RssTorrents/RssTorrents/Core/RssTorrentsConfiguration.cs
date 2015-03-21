@@ -9,6 +9,7 @@ namespace RssTorrents
 		
 		public RssTorrentsConfiguration ()
 		{
+			Feeds = new List<RssFeed>();
 		}
 	}
 }

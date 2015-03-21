@@ -6,13 +6,21 @@ namespace RssTorrents
 	{
 		public static void Main (string[] args)
 		{
-			Console.WriteLine ("Starting download...");
+			ConfigReader reader = new ConfigReader("RssTorrents.configuration");
+			var config = reader.ReadConfiguration();
 
-			var feed1 = new RssFeed ("12 Monkeys", "http://showrss.info/rss.php?user_id=240668&hd=null&proper=null&magnets=false&raw=true");
-			feed1.Update();
-			feed1.DownloadNewShows ();
+			Console.WriteLine ("Starting downloads...");
+
+			foreach(var feed in config.Feeds)
+			{
+				feed.Update();
+				feed.DownloadNewShows();
+			}
 
 			Console.WriteLine ("Downloaded!");
+
+			reader.SaveConfiguration(config);
+
 		}
 	}
 }
