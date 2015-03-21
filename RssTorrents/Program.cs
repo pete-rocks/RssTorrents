@@ -7,17 +7,21 @@ namespace RssTorrents
 	{
 		public static void Main (string[] args)
 		{
+			var feed1 = new RssFeed ("12 Monkeys", "http://showrss.info/rss.php?user_id=240668&hd=null&proper=null&magnets=false&raw=true");
+			feed1.Update();
+			feed1.DownloadNewShows ();
 
-			var shows = new ShowStatus (new RssFeed ("http://www.google.com"));
-			shows.CheckRssFeed ();
 
-			RssFetcher fetch = new RssFetcher ();
+			//RssFetcher fetch = new RssFetcher ();
 
-			var result = fetch.RssFeedExists ("http://www.google.com");
+			//var result = fetch.RssFeedExists ("http://showrss.info/feeds/350.rss");
 
-			if (result) {
-				return;
-			}
+			//if (result) {
+			//	return;
+			//}
+
+
+			return;
 
 			Application.Init ();
 			MainWindow win = new MainWindow ();
