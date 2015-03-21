@@ -1,9 +1,10 @@
-﻿<Properties StartupItem="RssTorrents.csproj">
+﻿<Properties StartupItem="RssTorrents/RssTorrents.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="RssFetcher.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="RssTorrents/Core/RssFetcher.cs">
     <Files>
-      <File FileName="Program.cs" Line="1" Column="1" />
-      <File FileName="RssFetcher.cs" Line="23" Column="4" />
+      <File FileName="RssTorrents/Program.cs" Line="15" Column="38" />
+      <File FileName="RssTorrents/Core/RssFetcher.cs" Line="5" Column="1" />
+      <File FileName="RssTorrents/packages.config" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
