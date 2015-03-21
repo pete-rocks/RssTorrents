@@ -37,6 +37,9 @@
     <Reference Include="QDFeedParser">
       <HintPath>..\packages\qdfeed.1.1.0\lib\net45\QDFeedParser.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -44,6 +47,9 @@
     <Compile Include="Core\RssFeed.cs" />
     <Compile Include="Core\RssFetcher.cs" />
     <Compile Include="Core\Show.cs" />
+    <Compile Include="Core\ConfigReader.cs" />
+    <Compile Include="Core\IConfigReader.cs" />
+    <Compile Include="Core\RssTorrentsConfiguration.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
