@@ -5,7 +5,7 @@ using QDFeedParser;
 
 namespace RssTorrents
 {
-	public class RssFetcher
+	public class RssFetcher : IRssFetcher
 	{
 		private static readonly Logger logger = LogManager.GetCurrentClassLogger();
 

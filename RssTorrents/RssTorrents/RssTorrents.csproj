@@ -40,6 +40,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -50,6 +53,11 @@
     <Compile Include="Core\ConfigReader.cs" />
     <Compile Include="Core\IConfigReader.cs" />
     <Compile Include="Core\RssTorrentsConfiguration.cs" />
+    <Compile Include="Core\IRssFeed.cs" />
+    <Compile Include="Core\IRssFetcher.cs" />
+    <Compile Include="AutoFac\AutoFacInstaller.cs" />
+    <Compile Include="Core\ConfigFileProvider.cs" />
+    <Compile Include="Core\IConfigFileProvider.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -59,5 +67,8 @@
     </None>
     <None Include="packages.config" />
     <None Include="NLog.xsd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AutoFac\" />
   </ItemGroup>
 </Project>

@@ -6,7 +6,11 @@ namespace RssTorrents
 	{
 		public static void Main (string[] args)
 		{
-			ConfigReader reader = new ConfigReader("RssTorrents.configuration");
+			//set up autofac
+			AutoFacInstaller.Install();
+
+			var reader = AutoFacInstaller.Get<IConfigReader>();
+
 			var config = reader.ReadConfiguration();
 
 			Console.WriteLine ("Starting downloads...");

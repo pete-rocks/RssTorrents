@@ -5,7 +5,7 @@ using NLog;
 
 namespace RssTorrents
 {
-	public class RssFeed
+	public class RssFeed : IRssFeed
 	{
 		public string FeedName { get ; private set;}
 		public string FeedURL { get; private set; }

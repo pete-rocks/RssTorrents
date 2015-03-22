@@ -1,6 +1,5 @@
 ﻿using System;
 using NLog;
-using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 
@@ -11,9 +10,9 @@ namespace RssTorrents
 		private readonly string _configFileLocation;
 		private static readonly Logger logger = LogManager.GetCurrentClassLogger();
 
-		public ConfigReader (string configFileLocation)
+		public ConfigReader (IConfigFileProvider configFileProvider)
 		{
-			_configFileLocation = configFileLocation;
+			_configFileLocation = configFileProvider.GetConfigFileLocation();
 		}
 
 		public RssTorrentsConfiguration ReadConfiguration()
@@ -41,7 +40,7 @@ namespace RssTorrents
 			File.WriteAllText (_configFileLocation, json);
 		}
 
-		private bool CreateConfigurationFile ()
+		private bool CreateConfigurationFile()
 		{
 			try
 			{

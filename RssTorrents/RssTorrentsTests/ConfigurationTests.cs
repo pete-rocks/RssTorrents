@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using System;
 using System.IO;
 using RssTorrents;
 
@@ -11,25 +10,25 @@ namespace RssTorrentsTests
 		[Test ()]
 		public void ConfigurationFileIsCreatedWhenNoneExists ()
 		{
-			var fileLocation = Guid.NewGuid().ToString();
+			var fileProvider = new TestConfigFileProvider();
 
-			IConfigReader reader = new ConfigReader(fileLocation);
+			IConfigReader reader = new ConfigReader(fileProvider);
 			var config = reader.ReadConfiguration();
 
 			Assert.IsNotNull(config);
 			Assert.IsNotNull(config.Feeds);
 			Assert.AreEqual(0, config.Feeds.Count);
-			Assert.IsTrue(File.Exists(fileLocation));
+			Assert.IsTrue(File.Exists(fileProvider.GetConfigFileLocation()));
 
 			//tidy up file
-			File.Delete(fileLocation);
+			File.Delete(fileProvider.GetConfigFileLocation());
 		}
 
 		[Test()]
 		public void FilesAreSavedAndRead()
 		{
-			var fileLocation = Guid.NewGuid().ToString();
-			IConfigReader reader = new ConfigReader(fileLocation);
+			var fileProvider = new TestConfigFileProvider();
+			IConfigReader reader = new ConfigReader(fileProvider);
 
 			var config = new RssTorrentsConfiguration();
 			config.Feeds.Add(new RssFeed("test","testURL"));
@@ -43,7 +42,7 @@ namespace RssTorrentsTests
 			Assert.AreEqual(config.Feeds[0].FeedURL, newConfig.Feeds[0].FeedURL);
 
 			//tidy up file
-			File.Delete(fileLocation);
+			File.Delete(fileProvider.GetConfigFileLocation());
 		}
 			
 	}
