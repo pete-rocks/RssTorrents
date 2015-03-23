@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace RssTorrents
 {
@@ -6,20 +8,17 @@ namespace RssTorrents
 	{
 		public static void Main (string[] args)
 		{
-			//set up autofac
 			AutoFacInstaller.Install();
 
 			var reader = AutoFacInstaller.Get<IConfigReader>();
 
 			var config = reader.ReadConfiguration();
 
+			//config.Feeds.Add(new RssFeed("Petes stuff","http://showrss.info/rss.php?user_id=240668&hd=0&proper=null&magnets=false"));
+
 			Console.WriteLine ("Starting downloads...");
 
-			foreach(var feed in config.Feeds)
-			{
-				feed.Update();
-				feed.DownloadNewShows();
-			}
+			Task.WhenAll(config.Feeds.Select(f => f.DownloadNewShows()));
 
 			Console.WriteLine ("Downloaded!");
 

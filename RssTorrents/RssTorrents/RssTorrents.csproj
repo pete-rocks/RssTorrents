@@ -58,6 +58,7 @@
     <Compile Include="AutoFac\AutoFacInstaller.cs" />
     <Compile Include="Core\ConfigFileProvider.cs" />
     <Compile Include="Core\IConfigFileProvider.cs" />
+    <Compile Include="AutoFac\IService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

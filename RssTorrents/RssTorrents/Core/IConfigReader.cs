@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace RssTorrents
 {
-	public interface IConfigReader
+	public interface IConfigReader : IService
 	{
 		RssTorrentsConfiguration ReadConfiguration();
 		void SaveConfiguration(RssTorrentsConfiguration config);

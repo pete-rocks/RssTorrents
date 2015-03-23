@@ -1,18 +1,21 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Net;
 using NLog;
+using System.Threading.Tasks;
 
 namespace RssTorrents
 {
 	public class RssFeed : IRssFeed
 	{
-		public string FeedName { get ; private set;}
-		public string FeedURL { get; private set; }
-		public List<Show> Shows { get; private set;}
-		public DateTime LastChecked { get ;set;}
-		public DateTime LastDownloaded { get ;set;}
-		private RssFetcher Fetcher { get; set; } 
+		public string FeedName { get ; set; }
+		public string FeedURL { get; set; }
+		public List<Show> Shows { get; set; }
+		public DateTime LastChecked { get; set;}
+		public DateTime LastDownloaded { get; set;}
+
+		private IRssFetcher Fetcher { get; set; } 
 	
 		private static readonly Logger logger = LogManager.GetCurrentClassLogger();
 
@@ -21,7 +24,7 @@ namespace RssTorrents
 			FeedName = feedName;
 			FeedURL = feedURL;
 
-			Fetcher = new RssFetcher ();
+			Fetcher = AutoFacInstaller.Get<IRssFetcher>();
 		}
 
 		public void Update()
@@ -30,26 +33,41 @@ namespace RssTorrents
 			LastChecked = DateTime.Now;
 		}
 
-		public void DownloadNewShows()
+		public async Task DownloadNewShows()
 		{
 			try
 			{
-				foreach(var show in Shows)
-				{
-					//var fileName = @"/Users/Pete/Downloads/" + show.EpisodeName + ".torrent";
-					var fileName = @"/Users/Pete/temp/" + show.EpisodeName + ".torrent";
-					logger.Info ("Trying to save {0} to {1}", show.TorrentUrl, fileName);
-					using (WebClient Client = new WebClient ())
-						Client.DownloadFile(show.TorrentUrl, fileName);
-				}
-
+				await Task.WhenAll(Shows.Select(show => DownloadShow(show)));
 				LastDownloaded = DateTime.Now;
 			}
 			catch(Exception ex) 
 			{
+				logger.Error ("Error while trying to save .torrent files", ex);
+			}
+		}
+
+		private async Task DownloadShow(Show show)
+		{
+			try
+			{
+				var fileName = @"/Users/Pete/temp/" + show.EpisodeName + ".torrent";
+				logger.Info ("Trying to save {0} to {1}", show.TorrentUrl, fileName);
+
+				using (var webClient = new WebClient())
+					await webClient.DownloadFileTaskAsync(new Uri(show.TorrentUrl), fileName);
+				
+			}
+			catch (Exception ex)
+			{
 				logger.Error ("Error while trying to save .torrent file", ex);
 			}
 		}
+
+		////private async Task DownloadMultipleFilesAsync(List<DocumentObject> doclist)
+		//{
+		//	await Task.WhenAll(doclist.Select(doc => DownloadFileAsync(doc)));
+		//}
+
 
 	}
 }

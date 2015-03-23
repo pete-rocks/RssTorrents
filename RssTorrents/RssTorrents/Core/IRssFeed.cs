@@ -1,12 +1,12 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace RssTorrents
 {
-	public interface IRssFeed
+	public interface IRssFeed : IService
 	{
 		void Update();
-		void DownloadNewShows();
-
+		Task DownloadNewShows();
 	}
 }
 

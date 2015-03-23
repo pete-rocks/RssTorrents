@@ -2,7 +2,7 @@
 
 namespace RssTorrents
 {
-	public interface IRssFetcher
+	public interface IRssFetcher : IService
 	{
 		List<Show> GetAllShows(string feedUrl);
 	}

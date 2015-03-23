@@ -1,6 +1,6 @@
 ﻿using Autofac;
 using System.Reflection;
-using System;
+using System.Linq;
 
 namespace RssTorrents
 {
@@ -14,6 +14,7 @@ namespace RssTorrents
 
 			// Scan an assembly for components - reigster them all
 			builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
+				.Where(t => t.GetInterfaces().Any(x => x.Name == "IService"))
 				.AsImplementedInterfaces();
 
 			_container = builder.Build();

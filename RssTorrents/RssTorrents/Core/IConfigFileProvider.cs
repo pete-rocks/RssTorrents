@@ -2,7 +2,7 @@
 
 namespace RssTorrents
 {
-	public interface IConfigFileProvider
+	public interface IConfigFileProvider : IService
 	{
 		string GetConfigFileLocation();
 	}
