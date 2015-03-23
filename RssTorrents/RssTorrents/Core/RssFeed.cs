@@ -37,7 +37,16 @@ namespace RssTorrents
 		{
 			try
 			{
-				await Task.WhenAll(Shows.Select(show => DownloadShow(show)));
+				
+				//Task.WhenAll(Shows.Select(show => DownloadShow(show)));
+
+				var tasks = Shows.Select(show => DownloadShow(show));
+
+				await Task.WhenAll(tasks);
+
+				tasks.First().Wait();
+
+
 				LastDownloaded = DateTime.Now;
 			}
 			catch(Exception ex) 
@@ -55,19 +64,14 @@ namespace RssTorrents
 
 				using (var webClient = new WebClient())
 					await webClient.DownloadFileTaskAsync(new Uri(show.TorrentUrl), fileName);
-				
+
+				return;
 			}
 			catch (Exception ex)
 			{
 				logger.Error ("Error while trying to save .torrent file", ex);
 			}
 		}
-
-		////private async Task DownloadMultipleFilesAsync(List<DocumentObject> doclist)
-		//{
-		//	await Task.WhenAll(doclist.Select(doc => DownloadFileAsync(doc)));
-		//}
-
 
 	}
 }

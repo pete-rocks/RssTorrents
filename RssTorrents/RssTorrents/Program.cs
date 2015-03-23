@@ -18,7 +18,7 @@ namespace RssTorrents
 
 			Console.WriteLine ("Starting downloads...");
 
-			Task.WhenAll(config.Feeds.Select(f => f.DownloadNewShows()));
+			Task.WhenAll(config.Feeds.Select(f => f.DownloadNewShows())).Wait();
 
 			Console.WriteLine ("Downloaded!");
 
