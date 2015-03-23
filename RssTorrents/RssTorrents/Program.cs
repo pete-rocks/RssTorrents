@@ -14,7 +14,8 @@ namespace RssTorrents
 
 			var config = reader.ReadConfiguration();
 
-			//config.Feeds.Add(new RssFeed("Petes stuff","http://showrss.info/rss.php?user_id=240668&hd=0&proper=null&magnets=false"));
+			config.Feeds = new System.Collections.Generic.List<RssFeed>();
+			config.Feeds.Add(new RssFeed("Petes stuff","http://showrss.info/rss.php?user_id=240668&hd=0&proper=0&magnets=false"));
 
 			Console.WriteLine ("Starting downloads...");
 
@@ -23,7 +24,6 @@ namespace RssTorrents
 			Console.WriteLine ("Downloaded!");
 
 			reader.SaveConfiguration(config);
-
 		}
 	}
 }

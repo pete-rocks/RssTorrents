@@ -24,7 +24,7 @@ namespace RssTorrents
 				foreach (var item in feed.Items) 
 				{
 					logger.Info (item.Content);
-					result.Add(new Show(item.Link, item.Title));
+					result.Add(new Show(item.Link, item.Title, item.DatePublished));
 				}
 			}
 			else 

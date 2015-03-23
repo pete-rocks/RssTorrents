@@ -37,16 +37,7 @@ namespace RssTorrents
 		{
 			try
 			{
-				
-				//Task.WhenAll(Shows.Select(show => DownloadShow(show)));
-
-				var tasks = Shows.Select(show => DownloadShow(show));
-
-				await Task.WhenAll(tasks);
-
-				tasks.First().Wait();
-
-
+				await Task.WhenAll(Shows.Where(show => show.DatePublished >= this.LastDownloaded).Select(show => DownloadShow(show)));
 				LastDownloaded = DateTime.Now;
 			}
 			catch(Exception ex) 
